@@ -1,0 +1,74 @@
+
+/* Border-Box Reset */
+html {
+  box-sizing: border-box;
+  font-family: Montserrat;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  /* background-color: #fbe9d8; */
+  background-color: #fdf5ea;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+/* Actual Styles! */
+.background{
+  background-color: rgb(220, 220, 220);
+}
+
+.grid-container{
+  
+  display: grid;
+  /* height: 100vh; */
+  grid-template-rows: 10vh auto;
+  /* grid-gap: 10px; */
+  /* align-items: center; */
+  text-align: center;
+}
+
+.grid-container > * {
+  /* background-color: beige; */
+  /* margin: 5px 0px; */
+  text-align: center;
+  padding: 5px;
+  /* border: solid black 2px; */
+  /* display: flex; */
+}
+
+.grid-container .main-area{
+  min-height: 75vh;
+}
+
+
+
+/* 
+.grid-container{
+  display: grid;
+  grid-template-rows: 10vh auto 100px;
+}
+
+.grid-container .item{
+  background-color: cadetblue;  
+  margin: 5px 10px;
+  text-align: center;
+  padding: 10px;
+}
+
+.grid-container .main-area{
+  min-height: 75vh;
+} */
