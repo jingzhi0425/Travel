@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ItineraryCard from "./itineraryCard";
 import fileDownload from 'js-file-download'
 
 
 export default function Itinerary(routes) {
   console.log("From Itinerary.js", routes)
+  const [showMessage, setShowMessage] = useState(false);
 
   async function handleTripSave(e) {
     console.log("HandleTripSave invoked")
@@ -26,7 +27,22 @@ export default function Itinerary(routes) {
 
     const data = await response.json()
     console.log(data)
+
+    if (response.ok) {
+      setShowMessage(true);
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 3000); // 3 seconds, you can adjust this duration
+    }
   }
+
+  useEffect(() => {
+    if (showMessage) {
+      setTimeout(() => {
+        setShowMessage(false);
+      }, 3000); // 3 seconds, you can adjust this duration
+    }
+  }, [showMessage]);
 
   async function handleCalendarDownload(e) {
     console.log("HandleCalendar invoked")
@@ -65,6 +81,22 @@ export default function Itinerary(routes) {
       <form onSubmit={handleCalendarDownload}>
         <button type="submit" className="section_heading text-center btn btn-warning p-2">Export to Calendar</button>
       </form>
+      {showMessage && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            backgroundColor: '#4CAF50',
+            color: 'white',
+            textAlign: 'center',
+            padding: '10px 0',
+          }}
+        >
+          <p>Trip saved successfully!</p>
+        </div>
+      )}
     </div>
   );
 }
